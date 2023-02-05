@@ -21,16 +21,17 @@ class Post(models.Model):
         ('Other', 'Other'),
     ]
 
-    artist = models.ForeignKey(
+    owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='images/')
     content = models.TextField()
-    style = models.CharField(max_length=50, choices=style_choices, blank=True)
+    style = models.CharField(
+        max_length=50, choices=style_choices, default='Other')
 
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.artist}: {self.style} post {self.id}'
+        return f'{self.owner}: {self.style} post {self.id}'
