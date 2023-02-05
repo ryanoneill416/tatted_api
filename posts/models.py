@@ -10,15 +10,15 @@ class Post(models.Model):
     """
 
     style_choices = [
-        ('Traditional', 'Traditional'),
-        ('Neo-Traditional', 'Neo-Traditional'),
-        ('Japanese', 'Japanese'),
-        ('Realism', 'Realism'),
-        ('Fineline', 'Fineline'),
-        ('Blackwork', 'Blackwork'),
-        ('Color', 'Color'),
-        ('Script', 'Script'),
-        ('Other', 'Other'),
+        ('traditional', 'Traditional'),
+        ('neo-traditional', 'Neo-Traditional'),
+        ('japanese', 'Japanese'),
+        ('realism', 'Realism'),
+        ('fineline', 'Fineline'),
+        ('blackwork', 'Blackwork'),
+        ('color', 'Color'),
+        ('script', 'Script'),
+        ('other', 'Other'),
     ]
 
     owner = models.ForeignKey(
@@ -28,7 +28,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='images/')
     content = models.TextField()
     style = models.CharField(
-        max_length=50, choices=style_choices, default='Other')
+        max_length=50, choices=style_choices, default='other')
 
     class Meta:
         ordering = ['-created_at']
