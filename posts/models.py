@@ -4,8 +4,8 @@ from django.conf import settings
 
 class Post(models.Model):
     """
-    Post model relating to 'artist', i.e. a User instance in
-    wich is_artist = True.
+    Post model relating to 'owner', i.e. a User instance in
+    which is_artist = True.
     Default image set so that image.url will be referenced successfully
     """
 
