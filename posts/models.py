@@ -25,7 +25,8 @@ class Post(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(
+        upload_to='images/', default='../default_post_ifegan', blank=True)
     content = models.TextField()
     style = models.CharField(
         max_length=50, choices=style_choices, default='other')
