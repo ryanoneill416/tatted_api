@@ -39,3 +39,13 @@ class CommentSerializer(serializers.ModelSerializer):
             'updated_at',
             'content'
         ]
+
+
+class CommentDetailSerializer(CommentSerializer):
+    """
+    This Serializer will be used in the 'detail' view
+    Post is a read-only field so it doesnt have to be set
+    every time it is updated.
+    """
+
+    post = serializers.ReadOnlyField(source='post.id')
