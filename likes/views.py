@@ -15,3 +15,14 @@ class LikeList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Presents the like detail view.
+    Allows owners of the like instance to delete the instance
+    """
+
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
