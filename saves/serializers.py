@@ -12,7 +12,7 @@ class SaveSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Like
+        model = Save
         fields = [
             'id', 'created_at', 'owner', 'post',
         ]
