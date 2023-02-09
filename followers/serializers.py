@@ -22,4 +22,4 @@ class FollowerSerializer(serializers.ModelSerializer):
         try:
             return super().create(validated_data)
         except IntegrityError:
-            raise serializer.ValidationError({'detail': 'possible duplicate'})
+            raise serializers.ValidationError({'detail': 'possible duplicate'})
