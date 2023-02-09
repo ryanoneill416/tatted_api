@@ -12,8 +12,6 @@ class Review(models.Model):
     user instances
     """
 
-    artists = settings.AUTH_USER_MODEL.objects.filter(is_artist=True)
-
     satisfaction_rating_choices = [
         ('highly recommends', 'Highly Recommend'),
         ('somewhat recommends', 'Somewhat Recommend'),
@@ -26,9 +24,10 @@ class Review(models.Model):
         on_delete=models.CASCADE
         )
     artist = models.ForeignKey(
-        artists,
+        settings.AUTH_USER_MODEL,
         related_name='artist',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        limit_choices_to={'is_artist': True}
         )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
