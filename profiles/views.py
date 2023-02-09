@@ -5,7 +5,7 @@ from tatted_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(generics.ListAPIView):
-    """"
+    """
     List of all profile instances
     Profile creation handled by django signals
     """
