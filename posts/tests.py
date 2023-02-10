@@ -1,4 +1,3 @@
-from django.conf import settings
 from .models import Post
 from users.models import CustomUser
 from rest_framework import status
