@@ -8,6 +8,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     is_artist = serializers.ReadOnlyField(source='owner.is_artist')
     following_id = serializers.SerializerMethodField()
+    posts_count = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -35,4 +38,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'is_owner',
             'is_artist',
             'following_id',
+            'posts_count',
+            'followers_count',
+            'following_count'
         ]
