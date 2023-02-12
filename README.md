@@ -1,108 +1,117 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome Ryan O'Neill,
+<h1>Tatted Backend API</h1>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+<h2 id="contents">Contents</h2>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+-   [Introduction](#introduction)
+-   [Database Schema](#database-schema)
+-   [User Stories](#user-stories)
+-   [Agile Methodology](#agile-methodology)
+-   [Technologies Used](#technologies-used)
+    -   [Languages](#languages)
+    -   [Frameworks, libraries, and Programs](#frameworks-libraries-and-programs)
+-   [Testing Automated and Manual](TESTING.md)
+-   [Bugs](#bugs)
+-   [Deployment](#deployment)
+    -   [Setting up JSON web tokens](#setting-up-json-web-tokens)
+    -   [Prepare API for deployment to Heroku](#prepare-api-for-deployment-to-heroku)
+    -   [Deployment to Heroku](#deployment-to-heroku)
+    -   [Database Creation Elephant SQL](#elephantsql)
+-   [Credits](#credits)
+-   [Acknowledgements](#acknowledgements)
 
-## Gitpod Reminders
+<h2 id="introduction">Introduction</h2>
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+This repository is the home of the backend API being used for the 'Tatted' application, made with the power of Django REST Framework (DRF).
 
-`python3 -m http.server`
+The repository for the frontend 'Tatted' application can be found <a href="#">here</a><br /><br />
 
-A blue button should appear to click: _Make Public_,
+<h2 id="database-schema">Database Schema</h2>
 
-Another blue button should appear to click: _Open Browser_.
+![Database Schema](docs/screenshots/tatted_api_dbs.png)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The Database Schema contains the following model instances:
+- Custom User
+- Profile
+- Post
+- Comment
+- Like
+- Save
+- Review
+- Follow
 
-A blue button should appear to click: _Make Public_,
+<h2 id="user-stories">User Stories</h2>
 
-Another blue button should appear to click: _Open Browser_.
+The user stories used for the creation of this API were as follows:
+- Tatted API 1: As an authenticated API user I can create a post if 'is_artist' = True
+- Tatted API 2: As an authenticated API user I can edit a post if 'is_owner' = True
+- Tatted API 3: As an authenticated API user I can delete a post if 'is_owner' = True
+- Tatted API 4: As an authenticated API user I can comment on a post
+- Tatted API 5: As an authenticated API user I can edit a comment if 'is_owner' = True
+- Tatted API 6: As an authenticated API user I can delete a comment if 'is_owner' = True
+- Tatted API 7: As an authenticated API user I can like/unlike post instances
+- Tatted API 8: As an authenticated API user I can save/ unsave post instances
+- Tatted API 9: As an authenticated API user I can post a review for a user instance where 'is_artist' = True
+- Tatted API 10: As an authenticated API user I can edit a review instance if 'is_owner' = True
+- Tatted API 11: As an authenticated API user I can delete a review instance where 'is_owner' = True
+- Tatted API 12: As an authenticated API user I can follow/ unfollow other user instances
+- Tatted API 13: As an authenticated API user I can edit my profile instance where 'is_owner' = True
+- Tatted API 14: As an authenticated API user I can login/logout
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<a href="#top">Back to the top.</a>
 
-To log into the Heroku toolbelt CLI:
+<h2 id="agile-methodology">Agile Methodology</h2>
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+he Agile Methodology was used thorughout the entire development of this application.  This was implemented by the means of a Github 'Project' which can be referenced here - <a href="https://github.com/users/ryanoneill416/projects/6" target="_blank"> Tatted Backend User Stories</a>
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+The project was used in a Kanban board style which was divided into the below categories:
 
-------
+-   Todo
+-   In Progress
+-   Done
 
-## Release History
+![Tatted User Stories Kanban](docs/screenshots/tatted-api-kanban.png)
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+Github issues were used to create User Stories and if any bugs or obstacles were to be tackled throughout the dev cycle. Issues were labelled in order to indicate importance of features. Each User Story, Fix or Update had a clear title outlining it's exact purpose.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+<a href="#top">Back to the top.</a>
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+<h2 id="technologies-used">Technologies Used</h2>
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+<h3 id="languages">Languages</h3>
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+Python was solely used for the development of this backend API
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+<h3 id="frameworks-libraries-and-programs">Frameworks, Libraries and Programs Used</h3>
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+- Django Cloudinary Storage 
+    - Storage of images in the cloud
+- Django Filter
+    - To filter the data
+- PyJWT 
+    - Python library which allows you to encode and decode JSON Web Tokens
+- Psycopg
+    - Psycopg is the most popular PostgreSQL database adapter for Python
+- Pillow 
+    - Image processing capabilities
+- Git
+    - For version control, committing and pushing to Github
+- Github
+    - For storing the repository, files and images pushed from Gitpod
+- Gitpod
+    - Browser based code editor used to develop the backend API
+- Heroku
+    - Used to deploy the backend API
+- Django Rest Auth
+    - Used for user authentication
+- ElephantSQL
+    - Used to host the PostgreSQL database
+- gunicorn
+    - As the Python WSGI HTTP Server
+- Cors headers
+    - To allow access from diferent domains
+- Pycodestyle
+    - For code validation
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+<a href="#top">Back to the top.</a>
