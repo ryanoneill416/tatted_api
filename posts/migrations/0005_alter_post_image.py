@@ -13,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='post',
             name='image',
-            field=models.ImageField(blank=True, default='../default_post_ifegan', upload_to='images/'),
+            field=models.ImageField(
+                blank=True,
+                default='../default_post_ifegan', upload_to='images/'),
         ),
     ]

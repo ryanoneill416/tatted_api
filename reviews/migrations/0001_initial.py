@@ -17,13 +17,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Review',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('content', models.TextField()),
-                ('satisfaction_rating', models.CharField(choices=[('highly recommends', 'Highly Recommend'), ('somewhat recommends', 'Somewhat Recommend'), ('does not recommend', 'Do Not Recommend')], max_length=50)),
-                ('artist', models.ForeignKey(limit_choices_to={'is_artist': True}, on_delete=django.db.models.deletion.CASCADE, related_name='artist', to=settings.AUTH_USER_MODEL)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviewer', to=settings.AUTH_USER_MODEL)),
+                ('satisfaction_rating', models.CharField(choices=[
+                    ('highly recommends', 'Highly Recommend'),
+                    ('somewhat recommends', 'Somewhat Recommend'),
+                    ('does not recommend', 'Do Not Recommend')],
+                    max_length=50)),
+                ('artist', models.ForeignKey(limit_choices_to={
+                 'is_artist': True},
+                 on_delete=django.db.models.deletion.CASCADE,
+                 related_name='artist', to=settings.AUTH_USER_MODEL)),
+                ('owner', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviewer', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-created_at'],

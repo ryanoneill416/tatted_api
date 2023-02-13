@@ -9,7 +9,7 @@ back to the [README.md](README.md)
     -   [Comments Views](#comments-views)
     -   [Review Views](#reviews-views)
 -  [Manual Testing](#manual-testing)
-    -   [API Endpoint Tests](#api-endpoint-tests)
+    -   [API Endpoint Testing](#api-endpoint-testing)
     -   [CRUD Testing](#crud-testing)
 -  [Validator Testing](#pycodestyle-validator-testing)
 -  [Bugs](#bugs)
@@ -84,7 +84,7 @@ The coverage report for this automated unit testing was as follows:
 ![Coverage Report Profiles View](/docs/screenshots/coverage-profiles.png)
 
 
-<a href="#top">Back to the top.</a>
+<a href="#top">Back to the top</a>
 
 <h3 id="posts-views">Posts Views</h3>
 
@@ -174,7 +174,7 @@ The coverage report for this automated unit testing was as follows:
 ![Coverage Report Posts View](/docs/screenshots/coverage-posts.png)
 
 
-<a href="#top">Back to the top.</a>
+<a href="#top">Back to the top</a>
 
 <h3 id="comments-views">Comments Views</h3>
 
@@ -269,7 +269,7 @@ The coverage report for this automated unit testing was as follows:
 
 ![Coverage Report Comments View](/docs/screenshots/coverage-comments.png)
 
-<a href="#top">Back to the top.</a>
+<a href="#top">Back to the top</a>
 
 <h3 id="reviews-views">Reviews Views</h3>
 
@@ -371,4 +371,123 @@ The coverage report for this automated unit testing was as follows:
 
 ![Coverage Report Reviews Views](/docs/screenshots/coverage-reviews.png)
 
-<a href="#top">Back to the top.</a>
+<a href="#top">Back to the top</a>
+
+<h2 id="manual-testing">Manual Testing</h2>
+
+Manual testing was carried out to test the API endpoints and the CRUD functionality of users.
+
+<h3 id="api-endpoint-testing">API Endpoint Testing</h3>
+
+|   URL Route   | Testing Result |
+|:-------------:|:--------------:|
+|    /profiles/    |      As Expected     |
+|   /profiles/pk/   |      As Expected     |
+|   /posts/  |      As Expected     |
+|  /posts/pk/ |      As Expected     |
+|   /comments/  |      As Expected     |
+|  /comments/pk/ |      As Expected     |
+|   /reviews/   |      As Expected     |
+|  /reviews/pk/  |      As Expected     |
+|    /likes/    |      As Expected     |
+|   /likes/pk/   |      As Expected     |
+|  /saves/  |      As Expected     |
+| /saves/pk/ |      As Expected     |
+| /followers/ |      As Expected     |
+| /followers/pk/ |      As Expected     |
+|       /       |      As Expected     |
+
+<a href="#top">Back to the top</a>
+
+<h3 id="crud-testing">CRUD Testing</h3>
+
+The following table is used to indicate the manual testing carried out to test the Create, Read, Update and Delete functionalities applicable to users.
+The following key is used to decipher the results:
+- A (Authenticated User)
+- AO (Authenticated User where 'is_owner' = True)
+- AT (Authenticated User where 'is_artist' = True)
+- All (Any Authenticated/Unauthenticated Users)
+
+
+|   Instance   |      Read      | Create                   | Edit                     | Delete                   |
+|:--------:|:--------------:|--------------------------|--------------------------|--------------------------|
+| Profile  | All| A | AO | AO |
+| Post     | All | AT | AO | AO |
+| Like     | All | A | AO | AO |
+| Comment  | All | A | AO | AO |
+| Review   | All | A | AO | AO |
+| Follow   | All | A | AO | AO |
+| Save     | All | A | AO | AO |
+
+<a href="#top">Back to the top</a>
+
+<h3 id="pycodestyle-validator-testing">Pycodestyle Validator Testing</h3>
+
+Pycodestyle was installed to validate the python code written.
+
+- All code has been validated with no errors present.
+- Settings.py file has 4 'line too long' errors which are constant with the use of django.
+
+| App       | Models.py | Serializers.py | Urls.py | Views.py |
+|-----------|-----------|----------------|---------|----------|
+| Profiles  |    PASS   |      PASS      |   PASS  |   PASS   |
+| Posts     |    PASS   |      PASS      |   PASS  |   PASS   |
+| Reviews   |    PASS   |      PASS      |   PASS  |   PASS   |
+| Likes     |    PASS   |      PASS      |   PASS  |   PASS   |
+| Saves     |    PASS   |      PASS      |   PASS  |   PASS   |
+| Comments  |    PASS   |      PASS      |   PASS  |   PASS   |
+| Followers |    PASS   |      PASS      |   PASS  |   PASS   |
+
+<a href="#top">Back to the top</a>
+
+<h2 id="bugs">Bugs</h2>
+
+There is a bug in dj-rest-auth that doesn't implement log out functionality to users.
+
+The solution was outlined in the Code Institute lessons relating to the DRF.
+
+To resolve this matter the following was carried out:
+
+1. In tatted_api views.py import JWT_AUTH from settings.py
+```
+from .settings import (
+    JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
+    JWT_AUTH_SECURE,
+```
+2. Write a logout view which sets the two access tokens (JWT_AUTH_COOKIE) and (JWT_AUTH_REFRESH_COOKIE), and enssure the cookies are http only and sent through HTTPS.
+```
+@api_view(['POST'])
+def logout_route(request):
+    response = Response()
+    response.set_cookie(
+        key=JWT_AUTH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    response.set_cookie(
+        key=JWT_AUTH_REFRESH_COOKIE,
+        value='',
+        httponly=True,
+        expires='Thu, 01 Jan 1970 00:00:00 GMT',
+        max_age=0,
+        samesite=JWT_AUTH_SAMESITE,
+        secure=JWT_AUTH_SECURE,
+    )
+    return response
+```
+3. In the main **urls.py** file import the newly-made logout route:
+```
+from .views import root_route, logout_route
+```
+4. Include it in the main url patterns list above the default dj-rest-auth path:
+```
+path('dj-rest-auth/logout/', logout_route),
+```
+
+Back to [README.md](README.md)
+
+<a href="#top">Back to the top</a>

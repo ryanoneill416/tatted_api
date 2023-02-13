@@ -17,13 +17,26 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('image', models.ImageField(upload_to='images/')),
                 ('content', models.TextField()),
-                ('style', models.CharField(blank=True, choices=[('Traditional', 'Traditional'), ('Neo-Traditional', 'Neo-Traditional'), ('Japanese', 'Japanese'), ('Realism', 'Realism'), ('Fineline', 'Fineline'), ('Blackwork', 'Blackwork'), ('Color', 'Color'), ('Script', 'Script'), ('Other', 'Other')], max_length=50)),
-                ('artist', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('style', models.CharField(blank=True, choices=[
+                    ('Traditional', 'Traditional'),
+                    ('Neo-Traditional', 'Neo-Traditional'),
+                    ('Japanese', 'Japanese'),
+                    ('Realism', 'Realism'),
+                    ('Fineline', 'Fineline'),
+                    ('Blackwork', 'Blackwork'),
+                    ('Color', 'Color'),
+                    ('Script', 'Script'),
+                    ('Other', 'Other')
+                ], max_length=50)),
+                ('artist', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-created_at'],

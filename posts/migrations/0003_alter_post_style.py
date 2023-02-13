@@ -13,6 +13,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='post',
             name='style',
-            field=models.CharField(choices=[('Traditional', 'Traditional'), ('Neo-Traditional', 'Neo-Traditional'), ('Japanese', 'Japanese'), ('Realism', 'Realism'), ('Fineline', 'Fineline'), ('Blackwork', 'Blackwork'), ('Color', 'Color'), ('Script', 'Script'), ('Other', 'Other')], default='Other', max_length=50),
+            field=models.CharField(choices=[
+                ('Traditional', 'Traditional'),
+                ('Neo-Traditional', 'Neo-Traditional'),
+                ('Japanese', 'Japanese'),
+                ('Realism', 'Realism'),
+                ('Fineline', 'Fineline'),
+                ('Blackwork', 'Blackwork'),
+                ('Color', 'Color'),
+                ('Script', 'Script'),
+                ('Other', 'Other')], default='Other', max_length=50),
         ),
     ]
