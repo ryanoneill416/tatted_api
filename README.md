@@ -11,7 +11,7 @@
 -   [Technologies Used](#technologies-used)
     -   [Languages](#languages)
     -   [Frameworks, libraries, and Programs](#frameworks-libraries-and-programs)
--   [Testing Automated and Manual](TESTING.md)
+-   [Testing (Automated and Manual)](TESTING.md)
 -   [Bugs](#bugs)
 -   [Deployment](#deployment)
     -   [Setting up JSON web tokens](#setting-up-json-web-tokens)
@@ -115,3 +115,8 @@ Python was solely used for the development of this backend API
     - For code validation
 
 <a href="#top">Back to the top.</a>
+
+<h2>Testing (Automated and Manual)</h2>
+
+- This backend API application was tested using automated unit testing, manual testing as well as the use of pycodestyle validations
+- Please find the testing results [here](/TESTING.md)
