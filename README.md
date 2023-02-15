@@ -15,9 +15,8 @@
     -   [Setting up JSON web tokens](#setting-up-json-web-tokens)
     -   [Preparation for Heroku deployment](#prepare-api-for-deployment-to-heroku)
     -   [Deployment to Heroku](#deployment-to-heroku)
-    -   [Database Creation Elephant SQL](#elephantsql)
+    -   [ElephantSQL Database Creation](#elephantsql)
 -   [Credits](#credits)
--   [Acknowledgements](#acknowledgements)
 
 <h2 id="introduction">Introduction</h2>
 
@@ -357,3 +356,27 @@ pip freeze > requirements.txt
 19. In Heroku on the deploy tab go to 'Deployment method' click Github
 20. Connect to the appropriate repository
 21. Enable automatic deployment for every 'push' made to GitHub
+
+<a href="#top">Back to the top</a>
+
+<h3 id="elephantsql">ElephantSQL Database Creation</h3>
+
+-   Login/Create an account with <a href="https://customer.elephantsql.com/login">ElephantSQL</a>
+
+-   Click the 'Create New Instance' option.
+
+-   Assign your instance a name, select your plan and relevant region.
+
+-   After this you can select 'Review' and then 'Create Instance' if happy with all details.
+
+-   Navigate to the newly created instance and retrieve database URL which will be needed to be included in Heroku's 'Config Vars'.
+
+-   Now the database is successfully created and linked to your project.
+
+<a href="#top">Back to the top</a>
+
+<h2 id="credits">Credits</h2>
+
+The Code Institute introduction to DRF Framework was referenced during the development cycle of this API.
+
+I learned how to create a custom user model based on the official django documentation.
