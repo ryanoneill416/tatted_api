@@ -26,3 +26,12 @@ class CustomRegisterSerializer(RegisterSerializer):
             'password2': self.validated_data.get('password2', ''),
             'is_artist': self.validated_data.get('is_artist', '')
         }
+
+    def custom_signup(self, request, user):
+        cleaned_data = self.get_cleaned_data()
+
+        user.is_artist = cleaned_data['is_artist']
+
+        user.save()
+
+        return super().custom_signup(request, user)
