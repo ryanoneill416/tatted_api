@@ -22,7 +22,7 @@ class CustomUserManager(BaseUserManager):
             **extra_fields
         )
         user.set_password(password)
-        user.save()
+        user.save(self._db)
         return user
 
     def create_superuser(self, username, password, is_artist, **extra_fields):

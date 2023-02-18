@@ -10,8 +10,8 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['is_artist']
 
     username = models.CharField(unique=True, max_length=50)
-    is_artist = models.BooleanField()
-    email = models.CharField(null=True, blank=True, max_length=100)
+    is_artist = models.BooleanField(default=False)
+    email = models.EmailField(null=True, blank=True, max_length=100)
 
     def __str__(self):
         return self.username
