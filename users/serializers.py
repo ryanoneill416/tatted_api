@@ -14,7 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
 class CustomRegisterSerializer(RegisterSerializer):
 
     username = serializers.CharField(required=True)
-    password = serializers.CharField(write_only=True)
+    password1 = serializers.CharField(write_only=True)
+    password2 = serializers.CharField(write_only=True)
     is_artist = serializers.BooleanField(required=True)
 
     def get_cleaned_data(self):
@@ -22,6 +23,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 
         return {
             'username': self.validated_data.get('username', ''),
-            'password': self.validated_data.get('password', ''),
+            'password1': self.validated_data.get('password1', ''),
+            'password2': self.validated_data.get('password2', ''),
             'is_artist': self.validated_data.get('is_artist', '')
         }
