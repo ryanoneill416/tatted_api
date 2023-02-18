@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
 
     REQUIRED_FIELDS = ['is_artist']
 
-    is_artist = models.BooleanField(default=False)
+    is_artist = models.BooleanField()
 
     def __str__(self):
         return self.username

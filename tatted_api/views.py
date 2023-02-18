@@ -1,9 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_auth.registration.views import RegisterView
 from .settings import (
     JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
     JWT_AUTH_SECURE,
 )
+from users.models import CustomUser
 
 
 @api_view()
@@ -36,3 +38,7 @@ def logout_route(request):
         secure=JWT_AUTH_SECURE,
     )
     return response
+
+
+class CustomRegisterView(RegisterView):
+    queryset = CustomUser.objects.all()
