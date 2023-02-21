@@ -41,7 +41,7 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None
-    
+
     def get_save_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
