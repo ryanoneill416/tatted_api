@@ -12,6 +12,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CustomRegisterSerializer(RegisterSerializer):
+    """
+    Custom Register Serializer needed for succesful implementation
+    of the custom user in the frontend
+    """
 
     username = serializers.CharField(required=True)
     password1 = serializers.CharField(write_only=True)

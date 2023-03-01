@@ -1,4 +1,6 @@
-<h1>Tatted Backend API</h1>
+<a id="top" href="https://tatted.herokuapp.com/" target="_blank"><img src="docs/screenshots/tatted.logo.png"></a><br />
+
+<h1>The Backend API of the 'tatted.' Application</h1>
 
 <h2 id="contents">Contents</h2>
 
@@ -10,7 +12,7 @@
     -   [Languages](#languages)
     -   [Frameworks, libraries, and Programs](#frameworks-libraries-and-programs)
 -   [Testing (Automated and Manual)](TESTING.md)
--   [Bugs](#bugs)
+-   [Bugs](TESTING.md#bugs)
 -   [Deployment](#deployment)
     -   [Setting up JSON web tokens](#setting-up-json-web-tokens)
     -   [Preparation for Heroku deployment](#prepare-api-for-deployment-to-heroku)
@@ -22,7 +24,7 @@
 
 This repository is the home of the backend API being used for the 'Tatted' application, made with the power of Django REST Framework (DRF).
 
-The repository for the frontend 'Tatted' application can be found <a href="#">here</a><br /><br />
+The repository for the frontend 'Tatted' application can be found <a href="https://github.com/ryanoneill416/tatted">here</a><br /><br />
 
 <h2 id="database-schema">Database Schema</h2>
 
@@ -60,7 +62,7 @@ The user stories used for the creation of this API were as follows:
 
 <h2 id="agile-methodology">Agile Methodology</h2>
 
-he Agile Methodology was used thorughout the entire development of this application.  This was implemented by the means of a Github 'Project' which can be referenced here - <a href="https://github.com/users/ryanoneill416/projects/6" target="_blank"> Tatted Backend User Stories</a>
+he Agile Methodology was used thorughout the entire development of this application.  This was implemented by the means of a Github 'Project' which can be referenced here.
 
 The project was used in a Kanban board style which was divided into the below categories:
 

@@ -4,6 +4,12 @@ from django.conf import settings
 
 
 class Profile(models.Model):
+    """
+    Profile model created in hand with user registration
+    Holds additional user data which they can update themselves
+    if they are the owner of the profile
+    """
+
     owner = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

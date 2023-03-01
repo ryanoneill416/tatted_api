@@ -5,6 +5,11 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
+    """
+    Custom User model created in order to have different application
+    access depending on if the user is an artist or not
+    """
+
     objects = CustomUserManager()
 
     REQUIRED_FIELDS = ['is_artist']

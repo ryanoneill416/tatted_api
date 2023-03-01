@@ -5,6 +5,14 @@ from saves.models import Save
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """
+    Serializer of the post model
+    profile_id and profile_image referencing means that
+    the post owner's account details can be seen upon rendering
+    of the post in the frontend.
+    Image validation ensures adequate file type, size and dimensions
+    """
+
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
